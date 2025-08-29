@@ -1,0 +1,44 @@
+/* globals.scss */
+:root{
+  --bg1: #0f172a;
+  --bg2: #0b1020;
+  --accent: #ffb703;
+  --accent2: #7c3aed;
+  --glass: rgba(255,255,255,0.06);
+}
+
+*{box-sizing:border-box}
+html,body,#__next{height:100dvh}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Roboto', sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  color: #fff;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* simple toast */
+.toast{
+  position:fixed; left:50%; transform:translateX(-50%) translateY(10px);
+  bottom: 80px; background: rgba(0,0,0,0.6); padding:8px 14px;border-radius:10px;
+  transition: all .25s ease; opacity:0; pointer-events:none;
+}
+.toast.visible{ opacity:1; transform:translateX(-50%) translateY(0); }
+.muted{ opacity:.6; font-style:italic; }
+
+/* center container (login) */
+.app-root{ height:100dvh; display:flex; align-items:center; justify-content:center; }
+.center-card{
+  width: min(420px, 92%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 28px; border-radius: 16px; text-align:center; box-shadow: 0 6px 40px rgba(0,0,0,0.6);
+}
+.title{ font-family:'Cinzel',serif; font-size:28px; margin:.25rem 0; letter-spacing:1px; }
+.subtitle{ margin:8px 0 18px; opacity:.8; }
+.name-input{ width:100%; padding:12px 14px; border-radius:10px; border:none; margin-bottom:12px; background: rgba(255,255,255,0.03); color:#fff; }
+.join-btn{ width:100%; padding:12px; border-radius:10px; border:none; background: linear-gradient(90deg,var(--accent),var(--accent2)); color:#000; font-weight:700; }
