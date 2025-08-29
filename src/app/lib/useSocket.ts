@@ -16,8 +16,12 @@ export default function useSocket() {
         initialized = true;
       }
       if (!sock) {
-        const baseUrl = window.location.origin;
-        sock = io(baseUrl, { path: "/api/socketio", transports: ["websocket", "polling"] });
+        const envUrl = process.env.NEXT_PUBLIC_SOCKET_URL;
+        const baseUrl = envUrl && envUrl.length > 0 ? envUrl : window.location.origin;
+        // If using external server, its path is "/socketio"; if local Next dev, still works with "/api/socketio"
+        const isExternal = !!envUrl;
+        const path = isExternal ? "/socketio" : "/api/socketio";
+        sock = io(baseUrl, { path, transports: ["websocket", "polling"] });
       }
       setSocket(sock);
     };
